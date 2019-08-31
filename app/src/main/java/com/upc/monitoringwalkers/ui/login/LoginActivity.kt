@@ -21,7 +21,7 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     private fun initUi() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        print("Hello world")
     }
 
     //region View Callbacks

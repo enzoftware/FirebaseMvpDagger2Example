@@ -8,6 +8,8 @@ class LoginPresenterImpl @Inject constructor(
     private val authentication: FirebaseAuthenticationInterface
 ) : LoginPresenter {
 
+    private lateinit var view: LoginView
+
     override fun onLoginClicked() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -21,6 +23,6 @@ class LoginPresenterImpl @Inject constructor(
     }
 
     override fun setView(view: LoginView) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.view = view
     }
 }
