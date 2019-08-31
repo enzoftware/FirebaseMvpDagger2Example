@@ -1,3 +1,8 @@
 package com.upc.monitoringwalkers.firebase.database
 
-interface FirebaseDatabaseInterface
+import com.upc.monitoringwalkers.model.Patient
+
+interface FirebaseDatabaseInterface {
+    fun createPatient(patient: Patient)
+    fun getPatientProfile(id: String, onResult: (Patient) -> Unit)
+}
