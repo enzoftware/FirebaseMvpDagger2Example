@@ -1,0 +1,3 @@
+package com.upc.monitoringwalkers.firebase.authentication
+
+interface FirebaseAuthenticationInterface

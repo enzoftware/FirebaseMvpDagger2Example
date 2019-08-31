@@ -1,0 +1,3 @@
+package com.upc.monitoringwalkers.firebase.database
+
+interface FirebaseDatabaseInterface
