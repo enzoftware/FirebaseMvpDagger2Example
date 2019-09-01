@@ -16,7 +16,7 @@ class SplashPresenterImpl @Inject constructor(
 
 
     override fun decideWhereToGo() {
-        val userType = databaseInterface.getUserType(currentUserId) { type ->
+        databaseInterface.getUserType(currentUserId) { type ->
             when (type) {
                 "PATIENT" -> {
                     view.onCurrentUserIsPacient()

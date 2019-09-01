@@ -6,7 +6,9 @@ import android.os.Handler
 import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.common.shortToast
 import com.upc.monitoringwalkers.splashPresenter
+import com.upc.monitoringwalkers.ui.admin.addDoctor.AddDoctorActivity
 import com.upc.monitoringwalkers.ui.base.BaseActivity
+import com.upc.monitoringwalkers.ui.doctor.addPacient.AddPatientActivity
 import com.upc.monitoringwalkers.ui.login.LoginActivity
 import com.upc.monitoringwalkers.ui.splash.view.SplashView
 
@@ -25,13 +27,13 @@ class SplashActivity : BaseActivity(), SplashView {
     private fun initUi() {
         Handler().postDelayed({
             presenter.decideWhereToGo()
-//            finish()
         }, 3200)
     }
 
     override fun onCurrentUserIsDoctor() {
-//        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, AddPatientActivity::class.java))
         shortToast(this, "Usuario doctor")
+        finish()
     }
 
     override fun onCurrentUserIsPacient() {
@@ -40,12 +42,14 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun onCurrentUserIsAdmin() {
-//        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, AddDoctorActivity::class.java))
         shortToast(this, "Usuario admin")
+        finish()
     }
 
     override fun onCurrentUserIsEmpty() {
         startActivity(Intent(this, LoginActivity::class.java))
         shortToast(this, "Usuario desconocido")
+        finish()
     }
 }
