@@ -6,9 +6,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.upc.monitoringwalkers.model.DoctorEntity
 import com.upc.monitoringwalkers.model.PatientEntity
+import com.upc.monitoringwalkers.model.mapToDoctor
 import javax.inject.Inject
 
 private const val KEY_USER = "user"
+private const val KEY_TYPE_USER = "type"
+private const val KEY_DOCTOR = "DOCTOR"
+
 
 class FirebaseDatabaseManager @Inject constructor(private val database: FirebaseDatabase) :
     FirebaseDatabaseInterface {
@@ -16,12 +20,11 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
     override fun getUserType(id: String, onResult: (String) -> Unit) {
         database.reference.child(KEY_USER).child(id).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val userType = snapshot.child("type").value
-                print(userType)
+                val userType = snapshot.child(KEY_TYPE_USER).value
                 onResult(userType.toString())
             }
 
-            override fun onCancelled(p0: DatabaseError) = Unit
+            override fun onCancelled(error: DatabaseError) = Unit
         })
     }
 
@@ -30,11 +33,11 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(DoctorEntity::class.java)
                 user?.run {
-                    onResult(DoctorEntity(id, name, lastName, password, email, type, username))
+                    onResult(DoctorEntity(id, name, lastName, email, type))
                 }
             }
 
-            override fun onCancelled(p0: DatabaseError) = Unit
+            override fun onCancelled(error: DatabaseError) = Unit
         })
     }
 
@@ -46,7 +49,8 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
                     onResult(PatientEntity(id, name, lastName, email, type, age, treatment))
                 }
             }
-            override fun onCancelled(p0: DatabaseError) = Unit
+
+            override fun onCancelled(error: DatabaseError) = Unit
         })
     }
 
@@ -55,4 +59,25 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
         database.reference.child(KEY_USER).child(patientEntity.id).setValue(patientEntity)
     }
 
+    override fun createDoctor(doctorEntity: DoctorEntity) {
+        database.reference.child(KEY_USER).child(doctorEntity.id).setValue(doctorEntity)
+    }
+
+    override fun getAllDoctors(onResult: (List<DoctorEntity>) -> Unit) {
+        database.reference.child(KEY_USER).orderByChild(KEY_TYPE_USER).equalTo(KEY_DOCTOR)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) = onResult(listOf())
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    snapshot.run {
+                        val doctors = children.mapNotNull { it.getValue(DoctorEntity::class.java) }
+                        onResult(doctors.map(DoctorEntity::mapToDoctor))
+                    }
+                }
+            })
+    }
+
+    override fun getPatientsByDoctor(doctorId: String, onResult: (List<PatientEntity>) -> Unit) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
