@@ -1,6 +1,9 @@
 package com.upc.monitoringwalkers.ui.login.presenter
 
+import com.upc.monitoringwalkers.common.isEmailValid
+import com.upc.monitoringwalkers.common.isPasswordValid
 import com.upc.monitoringwalkers.firebase.authentication.FirebaseAuthenticationInterface
+import com.upc.monitoringwalkers.model.LoginModel
 import com.upc.monitoringwalkers.ui.login.view.LoginView
 import javax.inject.Inject
 
@@ -9,17 +12,28 @@ class LoginPresenterImpl @Inject constructor(
 ) : LoginPresenter {
 
     private lateinit var view: LoginView
+    private val loginModel = LoginModel()
 
     override fun onLoginClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (loginModel.isValid()) {
+            authentication.login(loginModel.email, loginModel.password) { isSuccess ->
+                if (isSuccess) view.onLoginSuccess() else view.onLoginError()
+            }
+        }
     }
 
     override fun onEmailChanged(email: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loginModel.email = email
+        if (!isEmailValid(email)) {
+            view.showEmailError()
+        }
     }
 
     override fun onPasswordChanged(password: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loginModel.password = password
+        if (!isPasswordValid(password)) {
+            view.showPasswordError()
+        }
     }
 
     override fun setView(view: LoginView) {

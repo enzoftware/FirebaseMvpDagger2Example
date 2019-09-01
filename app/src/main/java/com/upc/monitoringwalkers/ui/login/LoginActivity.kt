@@ -2,14 +2,17 @@ package com.upc.monitoringwalkers.ui.login
 
 import android.os.Bundle
 import com.upc.monitoringwalkers.R
+import com.upc.monitoringwalkers.common.onTextChanged
+import com.upc.monitoringwalkers.common.shortToast
+import com.upc.monitoringwalkers.common.showGeneralError
 import com.upc.monitoringwalkers.loginPresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.login.view.LoginView
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity(), LoginView {
 
     private val presenter by lazy { loginPresenter() }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,25 +24,33 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     private fun initUi() {
-        print("Hello world")
+        login_email_edit.onTextChanged {
+            presenter.onEmailChanged(it!!)
+        }
+        login_password_edit.onTextChanged {
+            presenter.onPasswordChanged(it!!)
+        }
+        material_button_login.setOnClickListener {
+            presenter.onLoginClicked()
+        }
     }
 
     //region View Callbacks
 
     override fun onLoginSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        shortToast(this, "Inicio de sesion exitoso")
     }
 
     override fun onLoginError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showGeneralError(this)
     }
 
     override fun showEmailError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        login_email_edit.error = getString(R.string.email_error)
     }
 
     override fun showPasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        login_password_edit.error = getString(R.string.password_error)
     }
 
     //endregion
