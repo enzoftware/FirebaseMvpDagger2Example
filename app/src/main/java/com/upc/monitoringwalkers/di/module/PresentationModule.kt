@@ -4,6 +4,8 @@ import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenter
 import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenterImpl
 import com.upc.monitoringwalkers.ui.register.presenter.RegisterPresenter
 import com.upc.monitoringwalkers.ui.register.presenter.RegisterPresenterImpl
+import com.upc.monitoringwalkers.ui.splash.presenter.SplashPresenter
+import com.upc.monitoringwalkers.ui.splash.presenter.SplashPresenterImpl
 import dagger.Binds
 import dagger.Module
 
@@ -14,4 +16,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun registerPresenter(registerPresenter: RegisterPresenterImpl): RegisterPresenter
+
+    @Binds
+    abstract fun splashPresenter(splashPresenter: SplashPresenterImpl): SplashPresenter
 }
