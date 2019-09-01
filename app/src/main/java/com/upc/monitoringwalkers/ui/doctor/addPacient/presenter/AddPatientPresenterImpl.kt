@@ -1,4 +1,4 @@
-package com.upc.monitoringwalkers.ui.register.presenter
+package com.upc.monitoringwalkers.ui.doctor.addPacient.presenter
 
 import com.upc.monitoringwalkers.common.arePasswordsSame
 import com.upc.monitoringwalkers.common.isEmailValid
@@ -7,19 +7,19 @@ import com.upc.monitoringwalkers.firebase.authentication.FirebaseAuthenticationI
 import com.upc.monitoringwalkers.firebase.database.FirebaseDatabaseInterface
 import com.upc.monitoringwalkers.model.PatientEntity
 import com.upc.monitoringwalkers.model.RegisterPatientModel
-import com.upc.monitoringwalkers.ui.register.view.RegisterView
+import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
 import javax.inject.Inject
 
-class RegisterPresenterImpl @Inject constructor(
+class AddPatientPresenterImpl @Inject constructor(
     private val databaseInterface: FirebaseDatabaseInterface,
     private val authenticationInterface: FirebaseAuthenticationInterface
-) : RegisterPresenter {
+) : AddPatientPresenter {
 
-    private lateinit var view: RegisterView
+    private lateinit var view: AddPatientView
 
     private val patientModel = RegisterPatientModel()
 
-    override fun setView(view: RegisterView) {
+    override fun setView(view: AddPatientView) {
         this.view = view
     }
 

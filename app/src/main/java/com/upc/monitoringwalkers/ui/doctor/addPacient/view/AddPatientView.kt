@@ -1,6 +1,6 @@
-package com.upc.monitoringwalkers.ui.register.view
+package com.upc.monitoringwalkers.ui.doctor.addPacient.view
 
-interface RegisterView {
+interface AddPatientView {
 
     fun onRegisterSuccess()
 

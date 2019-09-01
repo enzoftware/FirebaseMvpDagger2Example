@@ -1,4 +1,4 @@
-package com.upc.monitoringwalkers.ui.register
+package com.upc.monitoringwalkers.ui.doctor.addPacient
 
 import android.os.Bundle
 import com.upc.monitoringwalkers.R
@@ -7,10 +7,10 @@ import com.upc.monitoringwalkers.common.shortToast
 import com.upc.monitoringwalkers.common.showGeneralError
 import com.upc.monitoringwalkers.registerPresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
-import com.upc.monitoringwalkers.ui.register.view.RegisterView
+import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : BaseActivity(), RegisterView {
+class AddPatientActivity : BaseActivity(), AddPatientView {
 
     private val presenter by lazy { registerPresenter() }
 

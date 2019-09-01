@@ -1,9 +1,9 @@
-package com.upc.monitoringwalkers.ui.register.presenter
+package com.upc.monitoringwalkers.ui.doctor.addPacient.presenter
 
 import com.upc.monitoringwalkers.ui.base.BasePresenter
-import com.upc.monitoringwalkers.ui.register.view.RegisterView
+import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
 
-interface RegisterPresenter : BasePresenter<RegisterView> {
+interface AddPatientPresenter : BasePresenter<AddPatientView> {
 
     fun onNameChanged(name: String)
 
