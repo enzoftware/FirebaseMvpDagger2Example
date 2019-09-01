@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.register.RegisterActivity">
+        <activity android:name=".ui.admin.addDoctor.AddDoctorActivity">
+
+        </activity>
+        <activity android:name=".ui.doctor.addPacient.AddPatientActivity">
 
         </activity>
         <activity android:name=".ui.splash.SplashActivity">
