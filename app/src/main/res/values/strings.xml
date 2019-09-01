@@ -11,4 +11,10 @@
     <string name="register_hint_confirm_password">Confirmar contraseña</string>
     <string name="register_hint_treatment">Tratamiento</string>
     <string name="register_hint_age">Edad</string>
+    <string name="register_btn_text">Registrar</string>
+    <string name="email_error">Correo invalido</string>
+    <string name="password_error">Contraseña invalida</string>
+    <string name="error_title">Error</string>
+    <string name="error_message">Ha ocurrido un error inesperado</string>
+    <string name="accept_button_text">Ok</string>
 </resources>
