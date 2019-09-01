@@ -4,7 +4,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.upc.monitoringwalkers.model.Patient
+import com.upc.monitoringwalkers.model.PatientEntity
 import javax.inject.Inject
 
 private const val KEY_USER = "user"
@@ -12,7 +12,7 @@ private const val KEY_USER = "user"
 class FirebaseDatabaseManager @Inject constructor(private val database: FirebaseDatabase) :
     FirebaseDatabaseInterface {
 
-    override fun getPatientProfile(id: String, onResult: (Patient) -> Unit) {
+    override fun getPatientProfile(id: String, onResult: (PatientEntity) -> Unit) {
         database.reference.child(KEY_USER).child(id).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -22,8 +22,8 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
         })
     }
 
-    override fun createPatient(patient: Patient) {
-        database.reference.child(KEY_USER).child(patient.id).setValue(patient)
+    override fun createPatient(patientEntity: PatientEntity) {
+        database.reference.child(KEY_USER).child(patientEntity.id).setValue(patientEntity)
     }
 
 }
