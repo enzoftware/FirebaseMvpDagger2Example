@@ -8,7 +8,7 @@ import com.upc.monitoringwalkers.common.showGeneralError
 import com.upc.monitoringwalkers.registerPresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_add_patient.*
 
 class AddPatientActivity : BaseActivity(), AddPatientView {
 
@@ -16,7 +16,7 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_add_patient)
         presenter.setView(this)
         initUi()
     }
