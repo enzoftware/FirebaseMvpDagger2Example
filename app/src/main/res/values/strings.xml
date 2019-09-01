@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Monitoring Walkers</string>
     <string name="action_settings">Settings</string>
+    <string name="login_btn_text">Iniciar sesion</string>
+    <string name="login_hint_email">Correo</string>
+    <string name="login_hint_password">Contraseña</string>
+    <string name="register_hint_name">Nombre</string>
+    <string name="register_hint_last_name">Apellidos</string>
+    <string name="register_hint_email">Correo</string>
+    <string name="register_hint_password">Contraseña</string>
+    <string name="register_hint_confirm_password">Confirmar contraseña</string>
+    <string name="register_hint_treatment">Tratamiento</string>
+    <string name="register_hint_age">Edad</string>
 </resources>
