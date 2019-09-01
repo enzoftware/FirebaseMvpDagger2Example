@@ -1,7 +1,13 @@
 package com.upc.monitoringwalkers.ui.register.presenter
 
+import com.upc.monitoringwalkers.common.arePasswordsSame
+import com.upc.monitoringwalkers.common.isEmailValid
+import com.upc.monitoringwalkers.common.isPasswordValid
 import com.upc.monitoringwalkers.firebase.authentication.FirebaseAuthenticationInterface
 import com.upc.monitoringwalkers.firebase.database.FirebaseDatabaseInterface
+import com.upc.monitoringwalkers.model.Patient
+import com.upc.monitoringwalkers.model.RegisterModel
+import com.upc.monitoringwalkers.model.UserType
 import com.upc.monitoringwalkers.ui.register.view.RegisterView
 import javax.inject.Inject
 
@@ -12,27 +18,71 @@ class RegisterPresenterImpl @Inject constructor(
 
     private lateinit var view: RegisterView
 
+    private val userModel = RegisterModel()
+
     override fun setView(view: RegisterView) {
         this.view = view
     }
 
-    override fun onUsernameChanged(username: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun onEmailChanged(email: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        userModel.email = email
+        if (!isEmailValid(email)) {
+            view.showEmailError()
+        }
     }
 
     override fun onPasswordChanged(password: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        userModel.password = password
+        if (!isPasswordValid(password)) {
+            view.showPasswordError()
+        }
     }
 
     override fun onRepeatPasswordChanged(repeatPassword: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        userModel.repeatPassword = repeatPassword
+        if (!arePasswordsSame(userModel.password, repeatPassword)) {
+            view.showPasswordMatchingError()
+        }
     }
 
     override fun onRegisterClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (userModel.isValid()) {
+
+        }
+    }
+
+    private fun onRegisterResult(isSuccessful: Boolean) {
+        if (!isSuccessful) {
+
+            view.onRegisterSuccess()
+        } else {
+            view.showSignUpError()
+        }
+    }
+
+    private fun createPatient(
+        username: String,
+        email: String,
+        name: String,
+        lastName: String,
+        age: Int,
+        treatment: String,
+        type: UserType
+    ) {
+        val id = authenticationInterface.getUserId()
+        val patient = Patient(
+            id,
+            name,
+            lastName,
+            password = "",
+            type = type,
+            age = age,
+            treatment = treatment,
+            email = email,
+            username = username
+
+        )
+        databaseInterface.createPatient(patient)
     }
 }

@@ -5,8 +5,6 @@ import com.upc.monitoringwalkers.ui.register.view.RegisterView
 
 interface RegisterPresenter : BasePresenter<RegisterView> {
 
-    fun onUsernameChanged(username: String)
-
     fun onEmailChanged(email: String)
 
     fun onPasswordChanged(password: String)

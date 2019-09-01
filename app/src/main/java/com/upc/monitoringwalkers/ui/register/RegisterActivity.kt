@@ -2,42 +2,60 @@ package com.upc.monitoringwalkers.ui.register
 
 import android.os.Bundle
 import com.upc.monitoringwalkers.R
+import com.upc.monitoringwalkers.common.onTextChanged
+import com.upc.monitoringwalkers.common.shortToast
+import com.upc.monitoringwalkers.common.showGeneralError
 import com.upc.monitoringwalkers.registerPresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.register.view.RegisterView
+import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : BaseActivity(), RegisterView {
 
     private val presenter by lazy { registerPresenter() }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        presenter.setView(this)
+        initUi()
+    }
+
+    private fun initUi() {
+        register_email_edit.onTextChanged {
+            presenter.onEmailChanged(it!!)
+        }
+        register_password_edit.onTextChanged {
+            presenter.onPasswordChanged(it!!)
+        }
+        register_confirm_password_edit.onTextChanged {
+            presenter.onRepeatPasswordChanged(it!!)
+        }
+
+        material_button_register.setOnClickListener {
+            presenter.onRegisterClicked()
+        }
     }
 
     override fun onRegisterSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        shortToast(this, "Registro exitoso")
     }
 
     override fun showSignUpError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showGeneralError(this)
     }
 
-    override fun showUsernameError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun showEmailError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        register_email_edit.error = getString(R.string.email_error)
     }
 
     override fun showPasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        register_password_edit.error = getString(R.string.password_error)
     }
 
     override fun showPasswordMatchingError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        register_confirm_password_edit.error = getString(R.string.password_error)
     }
 
 }
