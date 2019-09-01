@@ -15,3 +15,15 @@ data class RegisterPatientModel(
 ) {
     fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(password, repeatPassword)
 }
+
+
+data class RegisterDoctorModel(
+    var name: String = "",
+    var lastName: String = "",
+    var email: String = "",
+    val type: UserType = UserType.DOCTOR,
+    var password: String = "",
+    var repeatPassword: String = ""
+) {
+    fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(password, repeatPassword)
+}

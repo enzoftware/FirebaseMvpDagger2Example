@@ -5,7 +5,7 @@ data class PatientEntity(
     var name: String,
     var lastName: String,
     var email: String,
-    val type: UserType,
+    val type: UserType = UserType.PATIENT,
     var age: Int,
     var treatment: String
 )
