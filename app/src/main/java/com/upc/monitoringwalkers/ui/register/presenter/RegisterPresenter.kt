@@ -5,6 +5,14 @@ import com.upc.monitoringwalkers.ui.register.view.RegisterView
 
 interface RegisterPresenter : BasePresenter<RegisterView> {
 
+    fun onNameChanged(name: String)
+
+    fun onLastNameChanged(lastName: String)
+
+    fun onTreatmentChanged(treatment: String)
+
+    fun onAgeChanged(age: String)
+
     fun onEmailChanged(email: String)
 
     fun onPasswordChanged(password: String)

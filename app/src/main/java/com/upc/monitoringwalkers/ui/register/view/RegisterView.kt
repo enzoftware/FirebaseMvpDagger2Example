@@ -6,8 +6,6 @@ interface RegisterView {
 
     fun showSignUpError()
 
-    fun showUsernameError()
-
     fun showEmailError()
 
     fun showPasswordError()

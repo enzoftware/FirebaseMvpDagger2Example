@@ -32,6 +32,22 @@ class RegisterActivity : BaseActivity(), RegisterView {
             presenter.onRepeatPasswordChanged(it!!)
         }
 
+        register_age_edit.onTextChanged {
+            presenter.onAgeChanged(it!!)
+        }
+
+        register_treatment_edit.onTextChanged {
+            presenter.onTreatmentChanged(it!!)
+        }
+
+        register_name_edit.onTextChanged {
+            presenter.onNameChanged(it!!)
+        }
+
+        register_last_name_edit.onTextChanged {
+            presenter.onLastNameChanged(it!!)
+        }
+
         material_button_register.setOnClickListener {
             presenter.onRegisterClicked()
         }
