@@ -1,6 +1,9 @@
 package com.upc.monitoringwalkers.ui.register.presenter
 
-interface RegisterPresenter {
+import com.upc.monitoringwalkers.ui.base.BasePresenter
+import com.upc.monitoringwalkers.ui.register.view.RegisterView
+
+interface RegisterPresenter : BasePresenter<RegisterView> {
 
     fun onUsernameChanged(username: String)
 
