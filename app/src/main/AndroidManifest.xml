@@ -23,7 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.admin.addDoctor.AddDoctorActivity">
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.admin.listDoctors.ListDoctorsActivity" />
         </activity>
         <activity android:name=".ui.doctor.addPacient.AddPatientActivity">
 

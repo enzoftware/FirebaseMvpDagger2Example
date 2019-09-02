@@ -2,7 +2,6 @@ package com.upc.monitoringwalkers.ui.admin.listDoctors.presenter
 
 import com.upc.monitoringwalkers.firebase.database.FirebaseDatabaseInterface
 import com.upc.monitoringwalkers.ui.admin.listDoctors.view.ListDoctorsView
-import timber.log.Timber
 import javax.inject.Inject
 
 class ListDoctorsPresenterImpl @Inject constructor(
@@ -21,7 +20,6 @@ class ListDoctorsPresenterImpl @Inject constructor(
 
     override fun getAllDoctors() {
         databaseInterface.listenToDoctors {
-            Timber.i(it.toString())
             view.addDoctor(it)
         }
     }

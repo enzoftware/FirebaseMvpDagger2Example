@@ -44,6 +44,7 @@ class AddDoctorActivity : BaseActivity(), AddDoctorView {
 
     override fun onRegisterSuccess() {
         shortToast(this, "Registro doctor exitoso")
+        finish()
     }
 
     override fun showSignUpError() {

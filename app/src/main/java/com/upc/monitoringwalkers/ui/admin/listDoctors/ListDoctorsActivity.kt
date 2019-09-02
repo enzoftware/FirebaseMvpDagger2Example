@@ -1,12 +1,13 @@
 package com.upc.monitoringwalkers.ui.admin.listDoctors
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.listDoctorsPresenter
 import com.upc.monitoringwalkers.model.DoctorEntity
+import com.upc.monitoringwalkers.ui.admin.addDoctor.AddDoctorActivity
 import com.upc.monitoringwalkers.ui.admin.listDoctors.view.ListDoctorsView
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_list_doctors.*
@@ -24,9 +25,8 @@ class ListDoctorsActivity : BaseActivity(), ListDoctorsView {
         presenter.setView(this)
         presenter.viewReady()
         initUi()
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fab.setOnClickListener {
+            startActivity(Intent(this, AddDoctorActivity::class.java))
         }
     }
 
