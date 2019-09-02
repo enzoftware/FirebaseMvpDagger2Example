@@ -1,6 +1,5 @@
 package com.upc.monitoringwalkers.ui.doctor.addPacient.presenter
 
-import android.util.Log
 import com.upc.monitoringwalkers.common.arePasswordsSame
 import com.upc.monitoringwalkers.common.isEmailValid
 import com.upc.monitoringwalkers.common.isPasswordValid
@@ -61,9 +60,8 @@ class AddPatientPresenterImpl @Inject constructor(
         patientModel.age = age.toInt()
     }
 
-    override fun onRegisterClicked() {
-        patientModel.doctorId = authenticationInterface.getUserId()
-        Log.i("userInfo", authenticationInterface.getUserId())
+    override fun onRegisterClicked(doctorId: String) {
+        patientModel.doctorId = doctorId
         if (patientModel.isValid()) {
             authenticationInterface.register(
                 patientModel.email,
@@ -74,6 +72,7 @@ class AddPatientPresenterImpl @Inject constructor(
             }
         } else {
             print("Fallo")
+            // TODO : add error handler
         }
     }
 
@@ -88,7 +87,6 @@ class AddPatientPresenterImpl @Inject constructor(
 
     private fun createPatient(patient: RegisterPatientModel) {
         val id = authenticationInterface.getUserId()
-        Log.i("userInfo", authenticationInterface.getUserId())
         val patientEntity = PatientEntity(
             id,
             patient.name,

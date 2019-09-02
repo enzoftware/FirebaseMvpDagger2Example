@@ -19,6 +19,6 @@ interface AddPatientPresenter : BasePresenter<AddPatientView> {
 
     fun onRepeatPasswordChanged(repeatPassword: String)
 
-    fun onRegisterClicked()
+    fun onRegisterClicked(doctorId: String)
 
 }

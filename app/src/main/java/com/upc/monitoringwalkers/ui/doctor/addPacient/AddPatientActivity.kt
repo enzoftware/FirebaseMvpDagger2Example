@@ -5,6 +5,7 @@ import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.common.onTextChanged
 import com.upc.monitoringwalkers.common.shortToast
 import com.upc.monitoringwalkers.common.showGeneralError
+import com.upc.monitoringwalkers.model.getCurrentUserPreferenceObjectJson
 import com.upc.monitoringwalkers.registerPresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
@@ -49,7 +50,8 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
         }
 
         material_button_register.setOnClickListener {
-            presenter.onRegisterClicked()
+            val doctor = getCurrentUserPreferenceObjectJson(this, "currentUser")
+            presenter.onRegisterClicked(doctor.id)
         }
     }
 
