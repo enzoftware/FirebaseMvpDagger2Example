@@ -70,14 +70,14 @@ class AddDoctorPresenterImpl @Inject constructor(
 
     private fun onRegisterResult(isSuccessful: Boolean, doctor: RegisterDoctorModel) {
         if (isSuccessful) {
-            createPatient(doctor)
+            createDoctor(doctor)
             view.onRegisterSuccess()
         } else {
             view.showSignUpError()
         }
     }
 
-    private fun createPatient(doctor: RegisterDoctorModel) {
+    private fun createDoctor(doctor: RegisterDoctorModel) {
         val id = authenticationInterface.getUserId()
         val doctorEntity = DoctorEntity(
             id,

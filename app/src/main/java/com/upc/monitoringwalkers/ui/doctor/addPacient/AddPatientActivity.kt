@@ -54,7 +54,7 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
     }
 
     override fun onRegisterSuccess() {
-        shortToast(this, "Registro exitoso")
+        shortToast(this, "Registro paciente exitoso")
     }
 
     override fun showSignUpError() {
