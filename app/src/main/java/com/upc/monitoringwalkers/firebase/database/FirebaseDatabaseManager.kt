@@ -85,6 +85,7 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
             .addChildEventListener(object : ChildEventListener {
                 override fun onCancelled(error: DatabaseError) = Unit
                 override fun onChildMoved(snapshot: DataSnapshot, p1: String?) = Unit
+
                 override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {
                     snapshot.getValue(DoctorEntity::class.java)?.run {
                         if (isValid()) {

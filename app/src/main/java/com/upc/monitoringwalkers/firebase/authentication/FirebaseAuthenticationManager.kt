@@ -1,5 +1,6 @@
 package com.upc.monitoringwalkers.firebase.authentication
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import javax.inject.Inject
@@ -33,8 +34,8 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenticati
         onResult: (Boolean) -> Unit
     ) {
         authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-
             if (it.isComplete && it.isSuccessful) {
+                Log.i("userInfo22", getUserId())
                 onResult(true)
             } else {
                 onResult(false)
