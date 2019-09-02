@@ -22,7 +22,7 @@ class ListDoctorsPresenterImpl @Inject constructor(
     override fun getAllDoctors() {
         databaseInterface.listenToDoctors {
             Timber.i(it.toString())
-//            view.addDoctor(it)
+            view.addDoctor(it)
         }
     }
 }

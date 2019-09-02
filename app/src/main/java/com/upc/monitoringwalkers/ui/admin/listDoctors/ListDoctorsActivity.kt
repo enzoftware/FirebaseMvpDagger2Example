@@ -2,6 +2,7 @@ package com.upc.monitoringwalkers.ui.admin.listDoctors
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.listDoctorsPresenter
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.content_list_doctors.*
 class ListDoctorsActivity : BaseActivity(), ListDoctorsView {
 
     private val presenter by lazy { listDoctorsPresenter() }
-
+    private val adapter by lazy { DoctorAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +23,17 @@ class ListDoctorsActivity : BaseActivity(), ListDoctorsView {
         setSupportActionBar(toolbar)
         presenter.setView(this)
         presenter.viewReady()
+        initUi()
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+    }
+
+    private fun initUi() {
+        doctors_list_recycler_view.layoutManager = LinearLayoutManager(this)
+        doctors_list_recycler_view.setHasFixedSize(true)
+        doctors_list_recycler_view.adapter = adapter
     }
 
     override fun showNoDataDescription() {
@@ -37,8 +45,8 @@ class ListDoctorsActivity : BaseActivity(), ListDoctorsView {
     }
 
     override fun addDoctor(doctorEntity: DoctorEntity) {
-
-//        noItems.visibility = if (adapter.itemCount != 0) View.INVISIBLE else View.VISIBLE
+        adapter.addDoctor(doctorEntity)
+        noItems.visibility = if (adapter.itemCount != 0) View.INVISIBLE else View.VISIBLE
     }
 
 }
