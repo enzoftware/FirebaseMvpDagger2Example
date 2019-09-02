@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class SplashPresenterImpl @Inject constructor(
     private val databaseInterface: FirebaseDatabaseInterface,
-    private val authenticationInterface: FirebaseAuthenticationInterface
+    authenticationInterface: FirebaseAuthenticationInterface
 ) : SplashPresenter {
 
     private lateinit var view: SplashView
