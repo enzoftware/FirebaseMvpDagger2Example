@@ -21,12 +21,13 @@ class SplashActivity : BaseActivity(), SplashView {
         setFullScreenMode()
         setContentView(R.layout.activity_splash)
         presenter.setView(this)
+
         initUi()
     }
 
     private fun initUi() {
         Handler().postDelayed({
-            presenter.decideWhereToGo()
+            presenter.decideWhereToGo(this)
         }, 3200)
     }
 
