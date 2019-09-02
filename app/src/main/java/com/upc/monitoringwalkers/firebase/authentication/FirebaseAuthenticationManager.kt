@@ -2,18 +2,15 @@ package com.upc.monitoringwalkers.firebase.authentication
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import javax.inject.Inject
 
 class FirebaseAuthenticationManager @Inject constructor(private val authentication: FirebaseAuth) :
     FirebaseAuthenticationInterface {
 
-    override fun login(email: String, password: String, onResult: (Boolean) -> Unit) {
+    override fun login(email: String, password: String, onResult: (Boolean, String) -> Unit) {
         authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-            authentication.currentUser?.updateProfile(
-                UserProfileChangeRequest.Builder().setDisplayName(email).build()
-            )
-            onResult(it.isComplete && it.isSuccessful)
+            Log.i("userInfo", getUserId())
+            onResult(it.isComplete && it.isSuccessful, getUserId())
         }
     }
 
@@ -35,7 +32,6 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenticati
     ) {
         authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isComplete && it.isSuccessful) {
-                Log.i("userInfo22", getUserId())
                 onResult(true)
             } else {
                 onResult(false)

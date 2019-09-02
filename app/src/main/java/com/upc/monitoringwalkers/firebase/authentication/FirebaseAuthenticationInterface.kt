@@ -1,7 +1,7 @@
 package com.upc.monitoringwalkers.firebase.authentication
 
 interface FirebaseAuthenticationInterface {
-    fun login(email: String, password: String, onResult: (Boolean) -> Unit)
+    fun login(email: String, password: String, onResult: (Boolean, String) -> Unit)
     fun getUserId(): String
     fun getUsername(): String
     fun logout(onResult: () -> Unit)
