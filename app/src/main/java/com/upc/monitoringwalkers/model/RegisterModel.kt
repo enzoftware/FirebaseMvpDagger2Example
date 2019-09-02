@@ -11,9 +11,10 @@ data class RegisterPatientModel(
     var password: String = "",
     var repeatPassword: String = "",
     var age: Int = 0,
-    var treatment: String = ""
+    var treatment: String = "",
+    var doctorId: String = ""
 ) {
-    fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(password, repeatPassword)
+    fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(password, repeatPassword) && doctorId.isNotBlank()
 }
 
 
