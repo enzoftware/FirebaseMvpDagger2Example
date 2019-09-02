@@ -11,4 +11,5 @@ interface FirebaseDatabaseInterface {
     fun getUserType(id: String, onResult: (String) -> Unit)
     fun getAllDoctors(onResult: (List<DoctorEntity>) -> Unit)
     fun getPatientsByDoctor(doctorId: String, onResult: (List<PatientEntity>) -> Unit)
+    fun listenToDoctors(onResult: (DoctorEntity) -> Unit)
 }

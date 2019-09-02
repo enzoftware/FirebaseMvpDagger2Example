@@ -9,6 +9,9 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenticati
 
     override fun login(email: String, password: String, onResult: (Boolean) -> Unit) {
         authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            authentication.currentUser?.updateProfile(
+                UserProfileChangeRequest.Builder().setDisplayName(email).build()
+            )
             onResult(it.isComplete && it.isSuccessful)
         }
     }
@@ -30,10 +33,8 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenticati
         onResult: (Boolean) -> Unit
     ) {
         authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+
             if (it.isComplete && it.isSuccessful) {
-                authentication.currentUser?.updateProfile(
-                    UserProfileChangeRequest.Builder().setDisplayName(username).build()
-                )
                 onResult(true)
             } else {
                 onResult(false)

@@ -1,11 +1,10 @@
 package com.upc.monitoringwalkers.firebase.database
 
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import android.util.Log
+import com.google.firebase.database.*
 import com.upc.monitoringwalkers.model.DoctorEntity
 import com.upc.monitoringwalkers.model.PatientEntity
+import com.upc.monitoringwalkers.model.isValid
 import com.upc.monitoringwalkers.model.mapToDoctor
 import javax.inject.Inject
 
@@ -23,7 +22,6 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
                 val userType = snapshot.child(KEY_TYPE_USER).value
                 onResult(userType.toString())
             }
-
             override fun onCancelled(error: DatabaseError) = Unit
         })
     }
@@ -46,7 +44,7 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(PatientEntity::class.java)
                 user?.run {
-                    onResult(PatientEntity(id, name, lastName, email, type, age, treatment))
+                    onResult(PatientEntity(id, name, lastName, email, type, age, treatment, doctorId))
                 }
             }
 
@@ -78,6 +76,50 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
     }
 
     override fun getPatientsByDoctor(doctorId: String, onResult: (List<PatientEntity>) -> Unit) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    }
+
+    override fun listenToDoctors(onResult: (DoctorEntity) -> Unit) {
+        database.reference.child(KEY_USER)
+            .orderByChild(KEY_TYPE_USER).equalTo(KEY_DOCTOR)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) = Unit
+                override fun onChildMoved(snapshot: DataSnapshot, p1: String?) = Unit
+                override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {
+                    snapshot.getValue(DoctorEntity::class.java)?.run {
+                        if (isValid()) {
+                            Log.i(
+                                "doctorInfo",
+                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
+                            )
+                            onResult(mapToDoctor())
+                        }
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    snapshot.getValue(DoctorEntity::class.java)?.run {
+                        if (isValid()) {
+                            Log.i(
+                                "doctorInfo",
+                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
+                            )
+                            onResult(mapToDoctor())
+                        }
+                    }
+                }
+
+                override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
+                    snapshot.getValue(DoctorEntity::class.java)?.run {
+                        if (isValid()) {
+                            Log.i(
+                                "doctorInfo",
+                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
+                            )
+                            onResult(mapToDoctor())
+                        }
+                    }
+                }
+            })
     }
 }
