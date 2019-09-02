@@ -39,6 +39,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onLoginSuccess() {
         shortToast(this, "Inicio de sesion exitoso")
+
     }
 
     override fun onLoginError() {

@@ -18,6 +18,7 @@ class LoginPresenterImpl @Inject constructor(
         if (loginModel.isValid()) {
             authentication.login(loginModel.email, loginModel.password) { isSuccess ->
                 if (isSuccess) view.onLoginSuccess() else view.onLoginError()
+
             }
         }
     }

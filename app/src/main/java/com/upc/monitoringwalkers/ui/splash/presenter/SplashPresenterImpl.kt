@@ -7,13 +7,11 @@ import javax.inject.Inject
 
 class SplashPresenterImpl @Inject constructor(
     private val databaseInterface: FirebaseDatabaseInterface,
-    authenticationInterface: FirebaseAuthenticationInterface
+    private val authenticationInterface: FirebaseAuthenticationInterface
 ) : SplashPresenter {
 
     private lateinit var view: SplashView
-
     private val currentUserId = authenticationInterface.getUserId()
-
 
     override fun decideWhereToGo() {
         databaseInterface.getUserType(currentUserId) { type ->

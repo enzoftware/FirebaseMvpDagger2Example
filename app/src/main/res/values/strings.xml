@@ -17,4 +17,6 @@
     <string name="error_title">Error</string>
     <string name="error_message">Ha ocurrido un error inesperado</string>
     <string name="accept_button_text">Ok</string>
+    <string name="title_activity_list_doctors">ListDoctorsActivity</string>
+    <string name="no_items_text">No hay elementos disponibles</string>
 </resources>
