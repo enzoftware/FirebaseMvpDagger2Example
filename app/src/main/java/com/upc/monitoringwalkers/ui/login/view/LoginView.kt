@@ -1,7 +1,9 @@
 package com.upc.monitoringwalkers.ui.login.view
 
+import com.upc.monitoringwalkers.model.MWCurrentUser
+
 interface LoginView {
-    fun onLoginSuccess()
+    fun onLoginSuccess(currentUser: MWCurrentUser)
     fun onLoginError()
     fun showEmailError()
     fun showPasswordError()

@@ -6,6 +6,8 @@ import com.upc.monitoringwalkers.common.onTextChanged
 import com.upc.monitoringwalkers.common.shortToast
 import com.upc.monitoringwalkers.common.showGeneralError
 import com.upc.monitoringwalkers.loginPresenter
+import com.upc.monitoringwalkers.model.MWCurrentUser
+import com.upc.monitoringwalkers.model.setCurrentUserPreferenceObject
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.login.view.LoginView
 import kotlinx.android.synthetic.main.activity_login.*
@@ -37,9 +39,9 @@ class LoginActivity : BaseActivity(), LoginView {
 
     //region View Callbacks
 
-    override fun onLoginSuccess() {
+    override fun onLoginSuccess(currentUser: MWCurrentUser) {
+        setCurrentUserPreferenceObject(this, currentUser, "currentUser")
         shortToast(this, "Inicio de sesion exitoso")
-
     }
 
     override fun onLoginError() {
