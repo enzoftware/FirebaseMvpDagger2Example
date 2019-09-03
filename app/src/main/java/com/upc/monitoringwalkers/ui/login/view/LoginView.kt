@@ -7,4 +7,11 @@ interface LoginView {
     fun onLoginError()
     fun showEmailError()
     fun showPasswordError()
+
+    fun onCurrentUserIsDoctor()
+
+    fun onCurrentUserIsPatient()
+
+    fun onCurrentUserIsAdmin()
+
 }

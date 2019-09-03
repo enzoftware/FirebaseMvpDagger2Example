@@ -4,7 +4,7 @@ interface SplashView {
 
     fun onCurrentUserIsDoctor()
 
-    fun onCurrentUserIsPacient()
+    fun onCurrentUserIsPatient()
 
     fun onCurrentUserIsAdmin()
 

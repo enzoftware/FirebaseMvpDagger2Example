@@ -1,11 +1,17 @@
 package com.upc.monitoringwalkers.ui.splash.presenter
 
 import android.content.Context
+import com.upc.monitoringwalkers.firebase.authentication.FirebaseAuthenticationInterface
+import com.upc.monitoringwalkers.firebase.database.FirebaseDatabaseInterface
 import com.upc.monitoringwalkers.model.MWCurrentUser
 import com.upc.monitoringwalkers.model.getCurrentUserPreferenceObjectJson
 import com.upc.monitoringwalkers.ui.splash.view.SplashView
+import javax.inject.Inject
 
-class SplashPresenterImpl : SplashPresenter {
+class SplashPresenterImpl @Inject constructor(
+    private val authentication: FirebaseAuthenticationInterface,
+    private val databaseInterface: FirebaseDatabaseInterface
+) : SplashPresenter {
     private lateinit var view: SplashView
 
     override fun decideWhereToGo(context: Context) {
@@ -15,7 +21,7 @@ class SplashPresenterImpl : SplashPresenter {
             currentUser.id.isEmpty() -> view.onCurrentUserIsEmpty()
             else -> when (currentUser.type) {
                 "PATIENT" -> {
-                    view.onCurrentUserIsPacient()
+                    view.onCurrentUserIsPatient()
                 }
                 "DOCTOR" -> {
                     view.onCurrentUserIsDoctor()

@@ -37,7 +37,7 @@ class SplashActivity : BaseActivity(), SplashView {
         finish()
     }
 
-    override fun onCurrentUserIsPacient() {
+    override fun onCurrentUserIsPatient() {
 //        startActivity(Intent(this, LoginActivity::class.java))
         shortToast(this, "Usuario paciente")
     }
