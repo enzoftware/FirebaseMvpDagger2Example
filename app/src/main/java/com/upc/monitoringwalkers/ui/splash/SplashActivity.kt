@@ -6,10 +6,11 @@ import android.os.Handler
 import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.common.shortToast
 import com.upc.monitoringwalkers.splashPresenter
-import com.upc.monitoringwalkers.ui.admin.addDoctor.AddDoctorActivity
+import com.upc.monitoringwalkers.ui.admin.listDoctors.ListDoctorsActivity
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.doctor.addPacient.AddPatientActivity
 import com.upc.monitoringwalkers.ui.login.LoginActivity
+import com.upc.monitoringwalkers.ui.patients.profile.PatientProfileActivity
 import com.upc.monitoringwalkers.ui.splash.view.SplashView
 
 class SplashActivity : BaseActivity(), SplashView {
@@ -38,12 +39,12 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun onCurrentUserIsPatient() {
-//        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, PatientProfileActivity::class.java))
         shortToast(this, "Usuario paciente")
     }
 
     override fun onCurrentUserIsAdmin() {
-        startActivity(Intent(this, AddDoctorActivity::class.java))
+        startActivity(Intent(this, ListDoctorsActivity::class.java))
         shortToast(this, "Usuario admin")
         finish()
     }

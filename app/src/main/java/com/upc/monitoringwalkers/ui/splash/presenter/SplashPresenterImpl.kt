@@ -15,7 +15,7 @@ class SplashPresenterImpl @Inject constructor(
     private lateinit var view: SplashView
 
     override fun decideWhereToGo(context: Context) {
-        val currentUser: MWCurrentUser? = getCurrentUserPreferenceObjectJson(context, "currentUser")
+        val currentUser: MWCurrentUser? = getCurrentUserPreferenceObjectJson(context)
         when {
             currentUser == null -> view.onCurrentUserIsEmpty()
             currentUser.id.isEmpty() -> view.onCurrentUserIsEmpty()

@@ -5,10 +5,11 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         print("Welcome")
-
+//        setTheme(R.style.AppTheme2)
     }
 
     fun setFullScreenMode() {

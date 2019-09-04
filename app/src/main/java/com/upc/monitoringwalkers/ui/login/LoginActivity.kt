@@ -9,10 +9,11 @@ import com.upc.monitoringwalkers.common.showGeneralError
 import com.upc.monitoringwalkers.loginPresenter
 import com.upc.monitoringwalkers.model.MWCurrentUser
 import com.upc.monitoringwalkers.model.setCurrentUserPreferenceObject
-import com.upc.monitoringwalkers.ui.admin.addDoctor.AddDoctorActivity
+import com.upc.monitoringwalkers.ui.admin.listDoctors.ListDoctorsActivity
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.doctor.addPacient.AddPatientActivity
 import com.upc.monitoringwalkers.ui.login.view.LoginView
+import com.upc.monitoringwalkers.ui.patients.profile.PatientProfileActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity(), LoginView {
@@ -43,7 +44,7 @@ class LoginActivity : BaseActivity(), LoginView {
     //region View Callbacks
 
     override fun onLoginSuccess(currentUser: MWCurrentUser) {
-        setCurrentUserPreferenceObject(this, currentUser, "currentUser")
+        setCurrentUserPreferenceObject(this, currentUser)
         when (currentUser.type) {
             "DOCTOR" -> onCurrentUserIsDoctor()
             "PATIENT" -> onCurrentUserIsPatient()
@@ -72,12 +73,12 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun onCurrentUserIsPatient() {
-        //        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, PatientProfileActivity::class.java))
         shortToast(this, "Usuario paciente")
     }
 
     override fun onCurrentUserIsAdmin() {
-        startActivity(Intent(this, AddDoctorActivity::class.java))
+        startActivity(Intent(this, ListDoctorsActivity::class.java))
         shortToast(this, "Usuario admin")
         finish()
     }
