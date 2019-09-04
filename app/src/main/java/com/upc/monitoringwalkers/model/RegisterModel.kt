@@ -14,7 +14,10 @@ data class RegisterPatientModel(
     var treatment: String = "",
     var doctorId: String = ""
 ) {
-    fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(password, repeatPassword) && doctorId.isNotBlank()
+    fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(
+        password,
+        repeatPassword
+    ) && doctorId.isNotBlank() && name.isNotEmpty() && lastName.isNotEmpty()
 }
 
 
@@ -26,5 +29,6 @@ data class RegisterDoctorModel(
     var password: String = "",
     var repeatPassword: String = ""
 ) {
-    fun isValid(): Boolean = isEmailValid(email) && arePasswordsSame(password, repeatPassword)
+    fun isValid(): Boolean =
+        isEmailValid(email) && arePasswordsSame(password, repeatPassword) && name.isNotEmpty() && lastName.isNotEmpty()
 }

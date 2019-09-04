@@ -71,8 +71,8 @@ class AddPatientPresenterImpl @Inject constructor(
                 onRegisterResult(isSuccessful, patientModel)
             }
         } else {
-            print("Fallo")
-            // TODO : add error handler
+            print("fail")
+            view.showSignUpError()
         }
     }
 
