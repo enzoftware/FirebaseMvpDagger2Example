@@ -19,4 +19,7 @@
     <string name="accept_button_text">Ok</string>
     <string name="title_activity_list_doctors">ListDoctorsActivity</string>
     <string name="no_items_text">No hay elementos disponibles</string>
+    <string name="logout">Logout</string>
+    <string name="logout_btn_text">Cerrar sesion</string>
+    <string name="welcome_txt">Bienvenido</string>
 </resources>
