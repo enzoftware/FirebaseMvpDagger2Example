@@ -21,4 +21,6 @@ interface AddPatientPresenter : BasePresenter<AddPatientView> {
 
     fun onRegisterClicked(doctorId: String)
 
+    fun logout()
+
 }

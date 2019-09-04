@@ -99,4 +99,10 @@ class AddPatientPresenterImpl @Inject constructor(
         )
         databaseInterface.createPatient(patientEntity)
     }
+
+    override fun logout() {
+        authenticationInterface.logout {
+            view.onLogoutSuccess()
+        }
+    }
 }
