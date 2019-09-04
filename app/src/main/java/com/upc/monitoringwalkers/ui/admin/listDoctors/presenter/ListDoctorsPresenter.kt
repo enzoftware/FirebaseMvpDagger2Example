@@ -7,4 +7,6 @@ interface ListDoctorsPresenter : BasePresenter<ListDoctorsView> {
     fun viewReady()
 
     fun getAllDoctors()
+
+    fun logout()
 }

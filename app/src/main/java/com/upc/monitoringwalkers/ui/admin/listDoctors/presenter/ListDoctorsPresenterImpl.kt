@@ -1,11 +1,13 @@
 package com.upc.monitoringwalkers.ui.admin.listDoctors.presenter
 
+import com.upc.monitoringwalkers.firebase.authentication.FirebaseAuthenticationInterface
 import com.upc.monitoringwalkers.firebase.database.FirebaseDatabaseInterface
 import com.upc.monitoringwalkers.ui.admin.listDoctors.view.ListDoctorsView
 import javax.inject.Inject
 
 class ListDoctorsPresenterImpl @Inject constructor(
-    private val databaseInterface: FirebaseDatabaseInterface
+    private val databaseInterface: FirebaseDatabaseInterface,
+    private val authenticationInterface: FirebaseAuthenticationInterface
 ) : ListDoctorsPresenter {
 
     private lateinit var view: ListDoctorsView
@@ -21,6 +23,12 @@ class ListDoctorsPresenterImpl @Inject constructor(
     override fun getAllDoctors() {
         databaseInterface.listenToDoctors {
             view.addDoctor(it)
+        }
+    }
+
+    override fun logout() {
+        authenticationInterface.logout {
+            view.onLogoutSuccess()
         }
     }
 }
