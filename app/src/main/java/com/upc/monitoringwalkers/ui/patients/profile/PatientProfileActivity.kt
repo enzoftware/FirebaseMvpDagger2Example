@@ -6,11 +6,16 @@ import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.model.MWCurrentUser
 import com.upc.monitoringwalkers.model.getCurrentUserPreferenceObjectJson
 import com.upc.monitoringwalkers.model.setCurrentUserPreferenceObject
+import com.upc.monitoringwalkers.patientProfilePresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.login.LoginActivity
+import com.upc.monitoringwalkers.ui.patients.profile.view.PatientProfileView
 import kotlinx.android.synthetic.main.activity_patient_profile.*
 
-class PatientProfileActivity : BaseActivity() {
+class PatientProfileActivity : BaseActivity(), PatientProfileView {
+
+    private val presenter by lazy { patientProfilePresenter() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_profile)

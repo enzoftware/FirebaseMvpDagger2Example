@@ -12,17 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.patients.profile.PatientProfileActivity"></activity>
+        <activity
+            android:name=".ui.doctor.listPatients.ListPatientsActivity"
+            android:label="@string/title_activity_list_patients"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.patients.profile.PatientProfileActivity" />
         <activity
             android:name=".ui.admin.listDoctors.ListDoctorsActivity"
             android:label="@string/title_activity_list_doctors"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.admin.addDoctor.AddDoctorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.admin.listDoctors.ListDoctorsActivity" />
         </activity>
-        <activity android:name=".ui.doctor.addPacient.AddPatientActivity"></activity>
+        <activity android:name=".ui.doctor.addPacient.AddPatientActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.LoginActivity"></activity>
+        <activity android:name=".ui.login.LoginActivity" />
     </application>
 
 </manifest>

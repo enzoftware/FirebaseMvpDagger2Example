@@ -4,7 +4,11 @@ import com.upc.monitoringwalkers.ui.doctor.listPatients.view.ListPatientsView
 
 class ListPatientsPresenterImpl : ListPatientsPresenter {
 
+    private lateinit var view: ListPatientsView
+
     override fun setView(view: ListPatientsView) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.view = view
     }
+
+
 }
