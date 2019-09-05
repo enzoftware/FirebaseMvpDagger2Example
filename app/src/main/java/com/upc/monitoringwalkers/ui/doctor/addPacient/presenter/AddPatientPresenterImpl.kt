@@ -65,13 +65,11 @@ class AddPatientPresenterImpl @Inject constructor(
         if (patientModel.isValid()) {
             authenticationInterface.register(
                 patientModel.email,
-                patientModel.password,
-                patientModel.name
+                patientModel.password
             ) { isSuccessful ->
                 onRegisterResult(isSuccessful, patientModel)
             }
         } else {
-            print("fail")
             view.showSignUpError()
         }
     }
