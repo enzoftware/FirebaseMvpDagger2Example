@@ -37,6 +37,7 @@ class LoginActivity : BaseActivity(), LoginView {
             presenter.onPasswordChanged(it!!)
         }
         material_button_login.setOnClickListener {
+            showLoadingDialog()
             presenter.onLoginClicked()
         }
     }
@@ -45,6 +46,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onLoginSuccess(currentUser: MWCurrentUser) {
         setCurrentUserPreferenceObject(this, currentUser)
+        hideLoadingDialog()
         when (currentUser.type) {
             "DOCTOR" -> onCurrentUserIsDoctor()
             "PATIENT" -> onCurrentUserIsPatient()
@@ -55,6 +57,7 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun onLoginError() {
+        hideLoadingDialog()
         showGeneralError(this)
     }
 

@@ -10,6 +10,7 @@ import com.upc.monitoringwalkers.ui.admin.addDoctor.view.AddDoctorView
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_add_doctor.*
 
+
 class AddDoctorActivity : BaseActivity(), AddDoctorView {
 
     private val presenter by lazy { addDoctorPresenter() }
@@ -38,16 +39,19 @@ class AddDoctorActivity : BaseActivity(), AddDoctorView {
             presenter.onLastNameChanged(it!!)
         }
         material_button_register_doctor.setOnClickListener {
+            showLoadingDialog()
             presenter.onRegisterClicked()
         }
     }
 
     override fun onRegisterSuccess() {
+        hideLoadingDialog()
         shortToast(this, "Registro doctor exitoso")
         finish()
     }
 
     override fun showSignUpError() {
+        hideLoadingDialog()
         showGeneralError(this)
     }
 

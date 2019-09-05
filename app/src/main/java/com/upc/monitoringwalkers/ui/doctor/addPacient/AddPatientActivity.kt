@@ -54,6 +54,7 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
         }
 
         material_button_register.setOnClickListener {
+            showLoadingDialog()
             val doctor = getCurrentUserPreferenceObjectJson(this)
             presenter.onRegisterClicked(doctor.id)
         }
@@ -64,10 +65,12 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
     }
 
     override fun onRegisterSuccess() {
+        hideLoadingDialog()
         shortToast(this, "Registro paciente exitoso")
     }
 
     override fun showSignUpError() {
+        hideLoadingDialog()
         showGeneralError(this)
     }
 
