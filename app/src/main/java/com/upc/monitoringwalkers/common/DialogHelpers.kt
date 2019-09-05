@@ -5,6 +5,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.upc.monitoringwalkers.R
 
+/**
+ *
+ * Show an Alert Error Dialog
+ *
+ * @param context Context of the current activity
+ */
 fun showGeneralError(context: Context) {
     AlertDialog.Builder(context)
         .setTitle(context.resources.getString(R.string.error_title))
@@ -14,10 +20,24 @@ fun showGeneralError(context: Context) {
         .show()
 }
 
+/**
+ *
+ * Util method to show an LENGTH_SHORT toast
+ *
+ * @param context Context of the current activity
+ * @param text Text that would be shown in the Toast
+ */
 fun shortToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
 
+/**
+ *
+ * Util method to show an LENGTH_LONG toast
+ *
+ * @param context Context of the current activity
+ * @param text Text that would be shown in the Toast
+ */
 fun longToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_LONG).show()
 }

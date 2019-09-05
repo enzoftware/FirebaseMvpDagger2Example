@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.viewpager.widget.ViewPager
 
+
 inline fun EditText.onTextChanged(crossinline onTextChangedHandler: (String?) -> Unit) {
     addTextChangedListener(object : TextWatcher {
         override fun afterTextChanged(s: Editable?) = Unit
@@ -15,6 +16,7 @@ inline fun EditText.onTextChanged(crossinline onTextChangedHandler: (String?) ->
         }
     })
 }
+
 
 inline fun View.onClick(crossinline onClickHandler: () -> Unit) {
     setOnClickListener { onClickHandler() }
