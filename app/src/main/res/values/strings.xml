@@ -23,4 +23,6 @@
     <string name="logout_btn_text">Cerrar sesion</string>
     <string name="welcome_txt">Bienvenido</string>
     <string name="title_activity_list_patients">ListPatientsActivity</string>
+    <string name="please_wait_txt">Espere por favor</string>
+    <string name="loading_txt">Cargando...</string>
 </resources>
