@@ -8,6 +8,8 @@ import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresen
 import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresenterImpl
 import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenter
 import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenterImpl
+import com.upc.monitoringwalkers.ui.patients.profile.presenter.PatientProfilePresenter
+import com.upc.monitoringwalkers.ui.patients.profile.presenter.PatientProfilePresenterImpl
 import com.upc.monitoringwalkers.ui.splash.presenter.SplashPresenter
 import com.upc.monitoringwalkers.ui.splash.presenter.SplashPresenterImpl
 import dagger.Binds
@@ -29,4 +31,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun listDoctorsPresenter(listDoctorsPresenter: ListDoctorsPresenterImpl): ListDoctorsPresenter
+
+    @Binds
+    abstract fun patientProfilePresenter(patientProfilePresenter: PatientProfilePresenterImpl): PatientProfilePresenter
 }

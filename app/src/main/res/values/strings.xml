@@ -22,4 +22,5 @@
     <string name="logout">Logout</string>
     <string name="logout_btn_text">Cerrar sesion</string>
     <string name="welcome_txt">Bienvenido</string>
+    <string name="title_activity_list_patients">ListPatientsActivity</string>
 </resources>
