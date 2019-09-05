@@ -6,6 +6,8 @@ import com.upc.monitoringwalkers.ui.admin.listDoctors.presenter.ListDoctorsPrese
 import com.upc.monitoringwalkers.ui.admin.listDoctors.presenter.ListDoctorsPresenterImpl
 import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresenter
 import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresenterImpl
+import com.upc.monitoringwalkers.ui.doctor.listPatients.presenter.ListPatientsPresenter
+import com.upc.monitoringwalkers.ui.doctor.listPatients.presenter.ListPatientsPresenterImpl
 import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenter
 import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenterImpl
 import com.upc.monitoringwalkers.ui.patients.profile.presenter.PatientProfilePresenter
@@ -34,4 +36,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun patientProfilePresenter(patientProfilePresenter: PatientProfilePresenterImpl): PatientProfilePresenter
+
+    @Binds
+    abstract fun listPatientsPresenter(listPatientsPresenter: ListPatientsPresenterImpl): ListPatientsPresenter
 }
