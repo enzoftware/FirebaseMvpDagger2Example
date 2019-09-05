@@ -27,7 +27,6 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenticati
     override fun register(
         email: String,
         password: String,
-        username: String,
         onResult: (Boolean) -> Unit
     ) {
         authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
