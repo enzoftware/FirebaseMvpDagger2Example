@@ -59,6 +59,11 @@ dependencies {
     // Gson
     implementation 'com.google.code.gson:gson:2.8.5'
 
+    // Sweet Alert Dialog
+    implementation 'com.github.michael-rapp:android-material-dialog:5.1.6'
+
+
+
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
