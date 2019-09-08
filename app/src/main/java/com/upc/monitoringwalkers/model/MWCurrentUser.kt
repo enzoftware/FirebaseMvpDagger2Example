@@ -9,6 +9,13 @@ data class MWCurrentUser(val id: String = "", val type: String = "")
 
 private const val KEY_CURRENT_USER = "currentUser"
 
+
+/**
+ * Save the current user into SharedPreferences
+ *
+ * @param context Context of the activity
+ * @param currentUser Custom user object to be store in the local storage of the device
+ */
 fun setCurrentUserPreferenceObject(context: Context, currentUser: MWCurrentUser) {
     val appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(
         context.applicationContext
@@ -21,6 +28,12 @@ fun setCurrentUserPreferenceObject(context: Context, currentUser: MWCurrentUser)
 
 }
 
+/**
+ * Get the MWCustomUser that is store in the local storage
+ *
+ * @param context Context of the activity
+ * @return Custom user object
+ */
 fun getCurrentUserPreferenceObjectJson(context: Context): MWCurrentUser {
     val appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(
         context.applicationContext
