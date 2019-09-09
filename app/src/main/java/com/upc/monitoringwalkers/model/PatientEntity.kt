@@ -10,3 +10,8 @@ data class PatientEntity(
     var treatment: String = "",
     var doctorId: String = ""
 )
+
+fun PatientEntity.mapToPatient() = PatientEntity(id, name, lastName, email, type, age, treatment, doctorId)
+fun PatientEntity.isValid() = name.isNotBlank()
+        && email.isNotBlank()
+        && type.toString().isNotBlank()
