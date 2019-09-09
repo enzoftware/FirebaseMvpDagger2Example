@@ -2,10 +2,7 @@ package com.upc.monitoringwalkers.firebase.database
 
 import android.util.Log
 import com.google.firebase.database.*
-import com.upc.monitoringwalkers.model.DoctorEntity
-import com.upc.monitoringwalkers.model.PatientEntity
-import com.upc.monitoringwalkers.model.isValid
-import com.upc.monitoringwalkers.model.mapToDoctor
+import com.upc.monitoringwalkers.model.*
 import javax.inject.Inject
 
 private const val KEY_USER = "user"
@@ -118,6 +115,51 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
                                 "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
                             )
                             onResult(mapToDoctor())
+                        }
+                    }
+                }
+            })
+    }
+
+    override fun listenToPatientByDoctor(doctorId: String, onResult: (PatientEntity) -> Unit) {
+        database.reference.child(KEY_USER).orderByChild("doctorId").equalTo(doctorId)
+            .addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(error: DatabaseError) = Unit
+
+                override fun onChildMoved(snapshot: DataSnapshot, p1: String?) = Unit
+
+                override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {
+                    snapshot.getValue(PatientEntity::class.java)?.run {
+                        if (isValid()) {
+                            Log.i(
+                                "patientInfo",
+                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
+                            )
+                            onResult(mapToPatient())
+                        }
+                    }
+                }
+
+                override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
+                    snapshot.getValue(PatientEntity::class.java)?.run {
+                        if (isValid()) {
+                            Log.i(
+                                "patientInfo",
+                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
+                            )
+                            onResult(mapToPatient())
+                        }
+                    }
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    snapshot.getValue(PatientEntity::class.java)?.run {
+                        if (isValid()) {
+                            Log.i(
+                                "patientInfo",
+                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
+                            )
+                            onResult(mapToPatient())
                         }
                     }
                 }

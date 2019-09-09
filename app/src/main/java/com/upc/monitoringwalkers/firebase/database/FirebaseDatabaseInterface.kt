@@ -65,4 +65,7 @@ interface FirebaseDatabaseInterface {
      * @param onResult callback that refresh the UI with the database status
      */
     fun listenToDoctors(onResult: (DoctorEntity) -> Unit)
+
+
+    fun listenToPatientByDoctor(doctorId: String, onResult: (PatientEntity) -> Unit)
 }
