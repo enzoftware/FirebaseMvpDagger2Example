@@ -17,4 +17,19 @@ class ListPatientsPresenterImpl @Inject constructor(
     }
 
 
+    override fun viewReady(doctorId: String) {
+        listAllPatientByDoctor(doctorId)
+    }
+
+    override fun listAllPatientByDoctor(doctorId: String) {
+        databaseInterface.listenToPatientByDoctor(doctorId) {
+            view.addPatient(it)
+        }
+    }
+
+    override fun logoutPatient() {
+        authentication.logout {
+            view.logoutSuccess()
+        }
+    }
 }

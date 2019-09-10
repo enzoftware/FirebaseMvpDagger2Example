@@ -1,3 +1,14 @@
 package com.upc.monitoringwalkers.ui.doctor.listPatients.view
 
-interface ListPatientsView
+import com.upc.monitoringwalkers.model.PatientEntity
+
+interface ListPatientsView {
+
+    fun showNoDataDescription()
+
+    fun hideNoDataDescription()
+
+    fun addPatient(patientEntity: PatientEntity)
+
+    fun logoutSuccess()
+}
