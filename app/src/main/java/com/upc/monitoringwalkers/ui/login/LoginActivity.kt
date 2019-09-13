@@ -40,6 +40,7 @@ class LoginActivity : BaseActivity(), LoginView {
             showLoadingDialog()
             presenter.onLoginClicked()
         }
+        supportActionBar!!.hide()
     }
 
     //region View Callbacks

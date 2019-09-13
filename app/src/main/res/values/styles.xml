@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppThemeDoctorPatient" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,15 +9,15 @@
     </style>
 
 
-    <style name="AppTheme2" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppThemeAdmin" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#fff333</item>
-        <item name="colorPrimaryDark">#abc123</item>
-        <item name="colorAccent">#123abc</item>
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#00796B</item>
+        <item name="colorAccent">#448AFF</item>
     </style>
 
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppThemeDoctorPatient.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

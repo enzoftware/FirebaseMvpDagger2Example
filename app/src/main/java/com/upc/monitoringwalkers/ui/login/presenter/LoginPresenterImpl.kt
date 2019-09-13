@@ -31,6 +31,8 @@ class LoginPresenterImpl @Inject constructor(
                     view.onLoginError()
                 }
             }
+        } else {
+            view.onLoginError()
         }
     }
 
