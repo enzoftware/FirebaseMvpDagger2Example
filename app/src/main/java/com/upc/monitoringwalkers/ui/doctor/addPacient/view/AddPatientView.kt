@@ -12,5 +12,4 @@ interface AddPatientView {
 
     fun showPasswordMatchingError()
 
-    fun onLogoutSuccess()
 }

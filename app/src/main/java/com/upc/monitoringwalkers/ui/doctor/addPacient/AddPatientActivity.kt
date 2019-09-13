@@ -1,18 +1,14 @@
 package com.upc.monitoringwalkers.ui.doctor.addPacient
 
-import android.content.Intent
 import android.os.Bundle
 import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.common.onTextChanged
 import com.upc.monitoringwalkers.common.shortToast
 import com.upc.monitoringwalkers.common.showGeneralError
-import com.upc.monitoringwalkers.model.MWCurrentUser
 import com.upc.monitoringwalkers.model.getCurrentUserPreferenceObjectJson
-import com.upc.monitoringwalkers.model.setCurrentUserPreferenceObject
 import com.upc.monitoringwalkers.registerPresenter
 import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
-import com.upc.monitoringwalkers.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_add_patient.*
 
 class AddPatientActivity : BaseActivity(), AddPatientView {
@@ -58,14 +54,14 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
             val doctor = getCurrentUserPreferenceObjectJson(this)
             presenter.onRegisterClicked(doctor.id)
         }
+        supportActionBar!!.setTitle(R.string.add_patient)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        material_button_logout.setOnClickListener {
-            presenter.logout()
-        }
     }
 
     override fun onRegisterSuccess() {
         hideLoadingDialog()
+        onBackPressed()
         shortToast(this, "Registro paciente exitoso")
     }
 
@@ -87,9 +83,5 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
         register_confirm_password_edit.error = getString(R.string.password_error)
     }
 
-    override fun onLogoutSuccess() {
-        setCurrentUserPreferenceObject(this, MWCurrentUser())
-        finish()
-        startActivity(Intent(this, LoginActivity::class.java))
-    }
+
 }

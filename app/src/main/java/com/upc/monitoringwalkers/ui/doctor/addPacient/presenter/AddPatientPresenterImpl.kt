@@ -57,7 +57,7 @@ class AddPatientPresenterImpl @Inject constructor(
     }
 
     override fun onAgeChanged(age: String) {
-        patientModel.age = age.toInt()
+        patientModel.age = age
     }
 
     override fun onRegisterClicked(doctorId: String) {
@@ -91,16 +91,11 @@ class AddPatientPresenterImpl @Inject constructor(
             patient.lastName,
             patient.email,
             patient.type,
-            patient.age,
+            patient.age.toInt(),
             patient.treatment,
             patient.doctorId
         )
         databaseInterface.createPatient(patientEntity)
     }
 
-    override fun logout() {
-        authenticationInterface.logout {
-            view.onLogoutSuccess()
-        }
-    }
 }
