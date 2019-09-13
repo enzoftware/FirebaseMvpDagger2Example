@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="splashheart.json"
+        app:lottie_colorFilter="@color/colorPrimary"
         app:lottie_loop="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
