@@ -10,6 +10,8 @@ data class PatientEntity(
     val type: UserType = UserType.PATIENT,
     var age: Int = 0,
     var treatment: String = "",
+    var weight: Int = 0,
+    var affectation: Affectation = Affectation.LOW,
     var doctorId: String = ""
 ) {
     companion object {
@@ -28,7 +30,8 @@ data class PatientEntity(
     }
 }
 
-fun PatientEntity.mapToPatient() = PatientEntity(id, name, lastName, email, type, age, treatment, doctorId)
+fun PatientEntity.mapToPatient() =
+    PatientEntity(id, name, lastName, email, type, age, treatment, weight, affectation, doctorId)
 fun PatientEntity.isValid() = name.isNotBlank()
         && email.isNotBlank()
         && type.toString().isNotBlank()

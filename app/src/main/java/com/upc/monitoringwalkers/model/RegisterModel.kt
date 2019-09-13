@@ -11,6 +11,8 @@ data class RegisterPatientModel(
     var password: String = "",
     var repeatPassword: String = "",
     var age: String = "0",
+    var weight: String = "0",
+    var affectation: Affectation = Affectation.LOW,
     var treatment: String = "",
     var doctorId: String = ""
 ) {
