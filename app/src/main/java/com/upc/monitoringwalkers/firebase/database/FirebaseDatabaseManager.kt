@@ -41,7 +41,20 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(PatientEntity::class.java)
                 user?.run {
-                    onResult(PatientEntity(id, name, lastName, email, type, age, treatment, doctorId))
+                    onResult(
+                        PatientEntity(
+                            id,
+                            name,
+                            lastName,
+                            email,
+                            type,
+                            age,
+                            treatment,
+                            weight,
+                            affectation,
+                            doctorId
+                        )
+                    )
                 }
             }
 

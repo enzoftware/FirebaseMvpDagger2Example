@@ -93,6 +93,8 @@ class AddPatientPresenterImpl @Inject constructor(
             patient.type,
             patient.age.toInt(),
             patient.treatment,
+            patient.weight.toInt(),
+            patient.affectation,
             patient.doctorId
         )
         databaseInterface.createPatient(patientEntity)

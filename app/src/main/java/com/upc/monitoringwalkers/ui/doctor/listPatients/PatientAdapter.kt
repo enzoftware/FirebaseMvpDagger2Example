@@ -34,7 +34,7 @@ class PatientAdapter : RecyclerView.Adapter<PatientHolder>() {
 class PatientHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     @SuppressLint("SetTextI18n")
     fun displayData(patient: PatientEntity) = with(itemView) {
-        patientFullName.text = patient.name + patient.lastName
+        patientFullName.text = "${patient.name} ${patient.lastName}"
         patientEmail.text = patient.email
     }
 }
