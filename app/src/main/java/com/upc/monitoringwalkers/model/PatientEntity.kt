@@ -1,5 +1,7 @@
 package com.upc.monitoringwalkers.model
 
+import android.os.Bundle
+
 data class PatientEntity(
     var id: String = "",
     var name: String = "",
@@ -9,7 +11,22 @@ data class PatientEntity(
     var age: Int = 0,
     var treatment: String = "",
     var doctorId: String = ""
-)
+) {
+    companion object {
+        fun from(bundle: Bundle): PatientEntity {
+            return PatientEntity(
+            )
+        }
+    }
+
+    fun toBundle(): Bundle {
+        val bundle = Bundle()
+        with(bundle) {
+            putString("id", id)
+        }
+        return bundle
+    }
+}
 
 fun PatientEntity.mapToPatient() = PatientEntity(id, name, lastName, email, type, age, treatment, doctorId)
 fun PatientEntity.isValid() = name.isNotBlank()

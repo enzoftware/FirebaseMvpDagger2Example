@@ -10,7 +10,7 @@ data class RegisterPatientModel(
     val type: UserType = UserType.PATIENT,
     var password: String = "",
     var repeatPassword: String = "",
-    var age: Int = 0,
+    var age: String = "0",
     var treatment: String = "",
     var doctorId: String = ""
 ) {
