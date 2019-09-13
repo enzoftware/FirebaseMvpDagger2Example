@@ -42,12 +42,14 @@ class AddDoctorActivity : BaseActivity(), AddDoctorView {
             showLoadingDialog()
             presenter.onRegisterClicked()
         }
+        supportActionBar!!.setTitle(R.string.add_patient)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onRegisterSuccess() {
         hideLoadingDialog()
         shortToast(this, "Registro doctor exitoso")
-        finish()
+        onBackPressed()
     }
 
     override fun showSignUpError() {
