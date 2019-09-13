@@ -27,7 +27,7 @@ class ListPatientsPresenterImpl @Inject constructor(
         }
     }
 
-    override fun logoutPatient() {
+    override fun logout() {
         authentication.logout {
             view.logoutSuccess()
         }

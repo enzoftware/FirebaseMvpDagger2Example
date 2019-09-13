@@ -9,5 +9,5 @@ interface ListPatientsPresenter : BasePresenter<ListPatientsView> {
 
     fun listAllPatientByDoctor(doctorId: String)
 
-    fun logoutPatient()
+    fun logout()
 }

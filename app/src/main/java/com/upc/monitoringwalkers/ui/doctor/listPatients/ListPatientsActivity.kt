@@ -40,6 +40,9 @@ class ListPatientsActivity : BaseActivity(), ListPatientsView {
         fab.setOnClickListener { view ->
             startActivity(Intent(this, AddPatientActivity::class.java))
         }
+        list_patient_logout_btn.setOnClickListener {
+            presenter.logout()
+        }
     }
 
     override fun showNoDataDescription() {
