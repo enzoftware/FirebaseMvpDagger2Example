@@ -30,4 +30,5 @@
     <string name="doctors">Doctores</string>
     <string name="add_patient">Agregar paciente</string>
     <string name="add_doctor">Agregar doctor</string>
+    <string name="register_weight_age">Peso</string>
 </resources>
