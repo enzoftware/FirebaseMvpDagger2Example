@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.content_list_doctors.*
 class ListDoctorsActivity : BaseActivity(), ListDoctorsView {
 
     private val presenter by lazy { listDoctorsPresenter() }
-    private val adapter by lazy { DoctorAdapter() }
+    private val adapter by lazy { DoctorAdapter(presenter::onDeleteButtonClicked) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,5 +62,9 @@ class ListDoctorsActivity : BaseActivity(), ListDoctorsView {
         setCurrentUserPreferenceObject(this, MWCurrentUser())
         finish()
         startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    override fun deleteDoctor(doctorEntity: DoctorEntity) {
+        adapter.removeDoctor(doctorEntity)
     }
 }

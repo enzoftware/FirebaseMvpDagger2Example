@@ -10,6 +10,8 @@ interface ListDoctorsView {
 
     fun addDoctor(doctorEntity: DoctorEntity)
 
+    fun deleteDoctor(doctorEntity: DoctorEntity)
+
     fun onLogoutSuccess()
 
 }

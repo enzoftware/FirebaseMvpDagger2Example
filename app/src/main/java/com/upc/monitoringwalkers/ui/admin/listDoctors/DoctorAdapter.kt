@@ -9,13 +9,13 @@ import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.model.DoctorEntity
 import kotlinx.android.synthetic.main.item_doctor.view.*
 
-class DoctorAdapter : RecyclerView.Adapter<DoctorHolder>() {
+class DoctorAdapter(private val onDeleteClickHandler: (DoctorEntity) -> Unit) : RecyclerView.Adapter<DoctorHolder>() {
 
     private val items = mutableListOf<DoctorEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_doctor, parent, false)
-        return DoctorHolder(view)
+        return DoctorHolder(view, onDeleteClickHandler)
     }
 
     override fun getItemCount(): Int = items.size
@@ -41,12 +41,21 @@ class DoctorAdapter : RecyclerView.Adapter<DoctorHolder>() {
         notifyDataSetChanged()
     }
 
+    fun removeDoctor(doctorEntity: DoctorEntity) {
+        items.remove(doctorEntity)
+        notifyDataSetChanged()
+    }
+
 }
 
-class DoctorHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class DoctorHolder(itemView: View, private inline val onDeleteClickHandler: (DoctorEntity) -> Unit) :
+    RecyclerView.ViewHolder(itemView) {
     @SuppressLint("SetTextI18n")
     fun displayData(doctorEntity: DoctorEntity) = with(itemView) {
         doctorFullName.text = "${doctorEntity.name}  ${doctorEntity.lastName}"
         doctorEmail.text = doctorEntity.email
+        doctor_delete.setOnClickListener {
+            onDeleteClickHandler(doctorEntity)
+        }
     }
 }
