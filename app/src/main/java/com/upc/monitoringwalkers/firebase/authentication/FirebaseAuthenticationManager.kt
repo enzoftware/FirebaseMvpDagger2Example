@@ -37,4 +37,11 @@ class FirebaseAuthenticationManager @Inject constructor(private val authenticati
             }
         }
     }
+
+
+    override fun resetPassword(email: String, onResult: (Boolean) -> Unit) {
+        authentication.sendPasswordResetEmail(email).addOnCompleteListener {
+            onResult(it.isComplete && it.isSuccessful)
+        }
+    }
 }

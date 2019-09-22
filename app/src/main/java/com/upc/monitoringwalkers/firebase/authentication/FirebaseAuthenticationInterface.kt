@@ -44,4 +44,12 @@ interface FirebaseAuthenticationInterface {
         password: String,
         onResult: (Boolean) -> Unit
     )
+
+    /**
+     * TODO
+     *
+     * @param email
+     * @param onResult
+     */
+    fun resetPassword(email: String, onResult: (Boolean) -> Unit)
 }

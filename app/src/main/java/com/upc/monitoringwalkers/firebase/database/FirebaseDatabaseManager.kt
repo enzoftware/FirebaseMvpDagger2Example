@@ -108,17 +108,7 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
                     }
                 }
 
-                override fun onChildRemoved(snapshot: DataSnapshot) {
-                    snapshot.getValue(DoctorEntity::class.java)?.run {
-                        if (isValid()) {
-                            Log.i(
-                                "doctorInfo",
-                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
-                            )
-                            onResult(mapToDoctor())
-                        }
-                    }
-                }
+                override fun onChildRemoved(snapshot: DataSnapshot) = Unit
 
                 override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
                     snapshot.getValue(DoctorEntity::class.java)?.run {
@@ -165,17 +155,15 @@ class FirebaseDatabaseManager @Inject constructor(private val database: Firebase
                     }
                 }
 
-                override fun onChildRemoved(snapshot: DataSnapshot) {
-                    snapshot.getValue(PatientEntity::class.java)?.run {
-                        if (isValid()) {
-                            Log.i(
-                                "patientInfo",
-                                "${this.name} ${this.email} ${this.lastName} ${snapshot.key} ${this.type}"
-                            )
-                            onResult(mapToPatient())
-                        }
-                    }
-                }
+                override fun onChildRemoved(snapshot: DataSnapshot) = Unit
             })
+    }
+
+
+    override fun deleteUser(userId: String, onResult: (Boolean) -> Unit) {
+        database.reference.child(KEY_USER).child(userId).removeValue().addOnCompleteListener {
+            onResult(it.isSuccessful && it.isComplete)
+        }
+
     }
 }
