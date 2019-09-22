@@ -7,6 +7,7 @@ import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresen
 import com.upc.monitoringwalkers.ui.doctor.listPatients.presenter.ListPatientsPresenter
 import com.upc.monitoringwalkers.ui.login.presenter.LoginPresenter
 import com.upc.monitoringwalkers.ui.patients.profile.presenter.PatientProfilePresenter
+import com.upc.monitoringwalkers.ui.resetPassword.presenter.ResetPasswordPresenter
 import com.upc.monitoringwalkers.ui.splash.presenter.SplashPresenter
 import dagger.Component
 import javax.inject.Singleton
@@ -28,4 +29,6 @@ interface AppComponent {
     fun patientProfilePresenter(): PatientProfilePresenter
 
     fun listPatientsPresenter(): ListPatientsPresenter
+
+    fun resetPasswordPresenter(): ResetPasswordPresenter
 }
