@@ -14,6 +14,7 @@ import com.upc.monitoringwalkers.ui.base.BaseActivity
 import com.upc.monitoringwalkers.ui.doctor.listPatients.ListPatientsActivity
 import com.upc.monitoringwalkers.ui.login.view.LoginView
 import com.upc.monitoringwalkers.ui.patients.profile.PatientProfileActivity
+import com.upc.monitoringwalkers.ui.resetPassword.ResetPasswordActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity(), LoginView {
@@ -35,6 +36,10 @@ class LoginActivity : BaseActivity(), LoginView {
         }
         login_password_edit.onTextChanged {
             presenter.onPasswordChanged(it!!)
+        }
+
+        material_button_forgot_pass.setOnClickListener {
+            startActivity(Intent(this, ResetPasswordActivity::class.java))
         }
         material_button_login.setOnClickListener {
             showLoadingDialog()
