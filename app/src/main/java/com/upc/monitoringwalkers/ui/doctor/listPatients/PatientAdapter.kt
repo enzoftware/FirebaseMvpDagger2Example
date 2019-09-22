@@ -9,13 +9,14 @@ import com.upc.monitoringwalkers.R
 import com.upc.monitoringwalkers.model.PatientEntity
 import kotlinx.android.synthetic.main.item_patient.view.*
 
-class PatientAdapter : RecyclerView.Adapter<PatientHolder>() {
+class PatientAdapter(private val onDeleteClickHandler: (PatientEntity) -> Unit) :
+    RecyclerView.Adapter<PatientHolder>() {
 
     private val items = mutableListOf<PatientEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_patient, parent, false)
-        return PatientHolder(view)
+        return PatientHolder(view, onDeleteClickHandler)
     }
 
     override fun getItemCount(): Int = items.size
@@ -29,12 +30,24 @@ class PatientAdapter : RecyclerView.Adapter<PatientHolder>() {
         items.add(patient)
         notifyItemInserted(items.size - 1)
     }
+
+    fun removePatient(patient: PatientEntity) {
+        items.remove(patient)
+        notifyDataSetChanged()
+    }
+
 }
 
-class PatientHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class PatientHolder(
+    itemView: View,
+    private inline val onDeleteClickHandler: (PatientEntity) -> Unit
+) : RecyclerView.ViewHolder(itemView) {
     @SuppressLint("SetTextI18n")
     fun displayData(patient: PatientEntity) = with(itemView) {
         patientFullName.text = "${patient.name} ${patient.lastName}"
         patientEmail.text = patient.email
+        patient_delete.setOnClickListener {
+            onDeleteClickHandler(patient)
+        }
     }
 }

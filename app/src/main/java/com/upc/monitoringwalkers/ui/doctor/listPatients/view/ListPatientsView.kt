@@ -10,5 +10,7 @@ interface ListPatientsView {
 
     fun addPatient(patientEntity: PatientEntity)
 
+    fun deletePatient(patientEntity: PatientEntity)
+
     fun logoutSuccess()
 }

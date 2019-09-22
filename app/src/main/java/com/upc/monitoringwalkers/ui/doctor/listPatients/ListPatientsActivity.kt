@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.content_list_patients.*
 class ListPatientsActivity : BaseActivity(), ListPatientsView {
 
     private val presenter by lazy { listPatientsPresenter() }
-    private val adapter by lazy { PatientAdapter() }
+    private val adapter by lazy { PatientAdapter(presenter::onDeleteButtonClicked) }
     private lateinit var currentUser: MWCurrentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +56,10 @@ class ListPatientsActivity : BaseActivity(), ListPatientsView {
     override fun addPatient(patientEntity: PatientEntity) {
         adapter.addPatient(patientEntity)
         patientNoItems.visibility = if (adapter.itemCount != 0) View.INVISIBLE else View.VISIBLE
+    }
+
+    override fun deletePatient(patientEntity: PatientEntity) {
+        adapter.removePatient(patientEntity)
     }
 
     override fun logoutSuccess() {
