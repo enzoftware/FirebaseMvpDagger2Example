@@ -57,4 +57,16 @@
         app:layout_constraintStart_toStartOf="@+id/container"
         app:layout_constraintTop_toTopOf="@+id/container"
         app:srcCompat="@mipmap/ic_launcher" />
+
+
+    <ImageView
+        android:id="@+id/doctor_delete"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="delete"
+        android:src="@drawable/ic_delete_forever_red_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

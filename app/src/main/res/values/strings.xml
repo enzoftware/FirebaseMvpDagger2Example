@@ -31,4 +31,8 @@
     <string name="add_patient">Agregar paciente</string>
     <string name="add_doctor">Agregar doctor</string>
     <string name="register_weight_age">Peso</string>
+    <string name="no_txt">No</string>
+    <string name="yes_txt">Si</string>
+    <string name="warning_title">Cuidado!</string>
+    <string name="warning_message">Estas seguro que deseas eliminar?</string>
 </resources>
