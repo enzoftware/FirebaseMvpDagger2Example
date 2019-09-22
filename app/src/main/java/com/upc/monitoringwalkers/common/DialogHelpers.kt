@@ -20,6 +20,18 @@ fun showGeneralError(context: Context) {
         .show()
 }
 
+
+fun showDeleteAdvertice(context: Context) {
+    AlertDialog.Builder(context)
+        .setTitle(context.resources.getString(R.string.warning_title))
+        .setMessage(context.resources.getString(R.string.warning_message))
+        .setPositiveButton(context.resources.getString(R.string.yes_txt))
+        { dialog, _ -> dialog.dismiss() }
+        .setNegativeButton(context.resources.getString(R.string.no_txt))
+        { dialog, _ -> dialog.dismiss() }
+        .show()
+}
+
 /**
  *
  * Util method to show an LENGTH_SHORT toast
