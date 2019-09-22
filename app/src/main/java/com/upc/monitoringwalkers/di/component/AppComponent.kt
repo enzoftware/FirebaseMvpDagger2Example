@@ -2,6 +2,7 @@ package com.upc.monitoringwalkers.di.component
 
 import com.upc.monitoringwalkers.di.module.PresentationModule
 import com.upc.monitoringwalkers.ui.admin.addDoctor.presenter.AddDoctorPresenter
+import com.upc.monitoringwalkers.ui.admin.detailDoctor.presenter.DetailDoctorPresenter
 import com.upc.monitoringwalkers.ui.admin.listDoctors.presenter.ListDoctorsPresenter
 import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresenter
 import com.upc.monitoringwalkers.ui.doctor.listPatients.presenter.ListPatientsPresenter
@@ -31,4 +32,6 @@ interface AppComponent {
     fun listPatientsPresenter(): ListPatientsPresenter
 
     fun resetPasswordPresenter(): ResetPasswordPresenter
+
+    fun detailDoctorPresenter(): DetailDoctorPresenter
 }

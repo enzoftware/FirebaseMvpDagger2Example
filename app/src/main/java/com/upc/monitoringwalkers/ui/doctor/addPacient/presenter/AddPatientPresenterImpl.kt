@@ -5,6 +5,7 @@ import com.upc.monitoringwalkers.common.isEmailValid
 import com.upc.monitoringwalkers.common.isPasswordValid
 import com.upc.monitoringwalkers.firebase.authentication.FirebaseAuthenticationInterface
 import com.upc.monitoringwalkers.firebase.database.FirebaseDatabaseInterface
+import com.upc.monitoringwalkers.model.Affectation
 import com.upc.monitoringwalkers.model.PatientEntity
 import com.upc.monitoringwalkers.model.RegisterPatientModel
 import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
@@ -58,6 +59,14 @@ class AddPatientPresenterImpl @Inject constructor(
 
     override fun onAgeChanged(age: String) {
         patientModel.age = age
+    }
+
+    override fun onWeightChanged(weight: String) {
+        patientModel.weight = weight
+    }
+
+    override fun onAffectionChanged(affectation: Affectation) {
+        patientModel.affectation = affectation
     }
 
     override fun onRegisterClicked(doctorId: String) {

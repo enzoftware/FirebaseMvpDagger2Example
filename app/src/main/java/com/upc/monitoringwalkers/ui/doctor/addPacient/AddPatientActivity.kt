@@ -49,6 +49,16 @@ class AddPatientActivity : BaseActivity(), AddPatientView {
             presenter.onLastNameChanged(it!!)
         }
 
+        register_weight_edit.onTextChanged {
+            presenter.onWeightChanged(it!!)
+        }
+
+
+        affection_radio_group.setOnCheckedChangeListener { radioGroup, i ->
+
+        }
+
+
         material_button_register.setOnClickListener {
             showLoadingDialog()
             val doctor = getCurrentUserPreferenceObjectJson(this)

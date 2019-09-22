@@ -42,7 +42,7 @@ class AddDoctorActivity : BaseActivity(), AddDoctorView {
             showLoadingDialog()
             presenter.onRegisterClicked()
         }
-        supportActionBar!!.setTitle(R.string.add_patient)
+        supportActionBar!!.setTitle(R.string.add_doctor)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 

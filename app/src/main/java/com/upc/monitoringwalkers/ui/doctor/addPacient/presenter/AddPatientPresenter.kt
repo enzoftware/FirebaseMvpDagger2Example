@@ -1,5 +1,6 @@
 package com.upc.monitoringwalkers.ui.doctor.addPacient.presenter
 
+import com.upc.monitoringwalkers.model.Affectation
 import com.upc.monitoringwalkers.ui.base.BasePresenter
 import com.upc.monitoringwalkers.ui.doctor.addPacient.view.AddPatientView
 
@@ -20,6 +21,10 @@ interface AddPatientPresenter : BasePresenter<AddPatientView> {
     fun onRepeatPasswordChanged(repeatPassword: String)
 
     fun onRegisterClicked(doctorId: String)
+
+    fun onWeightChanged(weight: String)
+
+    fun onAffectionChanged(affectation: Affectation)
 
 
 }

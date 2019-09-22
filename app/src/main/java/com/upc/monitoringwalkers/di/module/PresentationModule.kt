@@ -2,6 +2,8 @@ package com.upc.monitoringwalkers.di.module
 
 import com.upc.monitoringwalkers.ui.admin.addDoctor.presenter.AddDoctorPresenter
 import com.upc.monitoringwalkers.ui.admin.addDoctor.presenter.AddDoctorPresenterImpl
+import com.upc.monitoringwalkers.ui.admin.detailDoctor.presenter.DetailDoctorPresenter
+import com.upc.monitoringwalkers.ui.admin.detailDoctor.presenter.DetailDoctorPresenterImpl
 import com.upc.monitoringwalkers.ui.admin.listDoctors.presenter.ListDoctorsPresenter
 import com.upc.monitoringwalkers.ui.admin.listDoctors.presenter.ListDoctorsPresenterImpl
 import com.upc.monitoringwalkers.ui.doctor.addPacient.presenter.AddPatientPresenter
@@ -44,4 +46,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun resetPasswordPresenter(resetPasswordPresenter: ResetPasswordPresenterImpl): ResetPasswordPresenter
+
+    @Binds
+    abstract fun detailDoctorPresenter(detailDoctorPresenter: DetailDoctorPresenterImpl): DetailDoctorPresenter
 }

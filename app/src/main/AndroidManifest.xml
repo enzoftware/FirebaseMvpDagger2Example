@@ -24,7 +24,7 @@
         <activity
             android:name=".ui.admin.listDoctors.ListDoctorsActivity"
             android:label="@string/title_activity_list_doctors"
-            android:theme="@style/AppThemeDoctorPatient.NoActionBar" />
+            android:theme="@style/AppThemeDoctorPatient.NoActionBar"></activity>
         <activity
             android:name=".ui.admin.addDoctor.AddDoctorActivity"
             android:parentActivityName=".ui.admin.listDoctors.ListDoctorsActivity" />
@@ -32,11 +32,13 @@
             android:name=".ui.doctor.addPacient.AddPatientActivity"
             android:parentActivityName=".ui.doctor.listPatients.ListPatientsActivity" />
         <activity android:name=".ui.splash.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".ui.login.LoginActivity" />
     </application>
