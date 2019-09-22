@@ -21,12 +21,12 @@ fun showGeneralError(context: Context) {
 }
 
 
-fun showDeleteAdvertice(context: Context) {
+fun showDeleteAdvertice(context: Context, onConfirm: () -> Unit) {
     AlertDialog.Builder(context)
         .setTitle(context.resources.getString(R.string.warning_title))
         .setMessage(context.resources.getString(R.string.warning_message))
         .setPositiveButton(context.resources.getString(R.string.yes_txt))
-        { dialog, _ -> dialog.dismiss() }
+        { dialog, _ -> onConfirm() }
         .setNegativeButton(context.resources.getString(R.string.no_txt))
         { dialog, _ -> dialog.dismiss() }
         .show()

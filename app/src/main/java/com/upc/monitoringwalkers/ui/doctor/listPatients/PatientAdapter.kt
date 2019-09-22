@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.upc.monitoringwalkers.R
+import com.upc.monitoringwalkers.common.showDeleteAdvertice
 import com.upc.monitoringwalkers.model.PatientEntity
 import kotlinx.android.synthetic.main.item_patient.view.*
 
@@ -47,7 +48,9 @@ class PatientHolder(
         patientFullName.text = "${patient.name} ${patient.lastName}"
         patientEmail.text = patient.email
         patient_delete.setOnClickListener {
-            onDeleteClickHandler(patient)
+            showDeleteAdvertice(context) {
+                onDeleteClickHandler(patient)
+            }
         }
     }
 }
