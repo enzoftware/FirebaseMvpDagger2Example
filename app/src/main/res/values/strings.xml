@@ -35,4 +35,5 @@
     <string name="yes_txt">Si</string>
     <string name="warning_title">Cuidado!</string>
     <string name="warning_message">Estas seguro que deseas eliminar?</string>
+    <string name="detail_doctor">Detalle doctor</string>
 </resources>

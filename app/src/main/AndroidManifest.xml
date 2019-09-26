@@ -15,7 +15,9 @@
         <activity
             android:name=".ui.resetPassword.ResetPasswordActivity"
             android:parentActivityName=".ui.login.LoginActivity" />
-        <activity android:name=".ui.admin.detailDoctor.DetailDoctorActivity" />
+        <activity
+            android:name=".ui.admin.detailDoctor.DetailDoctorActivity"
+            android:parentActivityName=".ui.admin.listDoctors.ListDoctorsActivity" />
         <activity
             android:name=".ui.doctor.listPatients.ListPatientsActivity"
             android:label="@string/title_activity_list_patients"

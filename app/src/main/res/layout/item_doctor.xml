@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:layout_marginTop="8dp">
 
-
     <RelativeLayout
-        android:id="@+id/container"
+        android:id="@+id/container_item_doctor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -44,7 +44,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/img_user"
+        android:id="@+id/img_user_doctor"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
@@ -53,10 +53,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toStartOf="@+id/container"
-        app:layout_constraintStart_toStartOf="@+id/container"
-        app:layout_constraintTop_toTopOf="@+id/container"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:layout_constraintEnd_toStartOf="@+id/container_item_doctor"
+        app:layout_constraintStart_toStartOf="@+id/container_item_doctor"
+        app:layout_constraintTop_toTopOf="@+id/container_item_doctor"
+        app:srcCompat="@drawable/ic_person_outline_black_24dp" />
 
 
     <ImageView
