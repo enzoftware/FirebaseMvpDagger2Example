@@ -11,8 +11,6 @@ fun isEmailValid(email: String) = Pattern.matches(EMAIL_REGEX, email)
 
 fun isPasswordValid(password: String) = password.length >= MIN_CREDENTIAL_LENGTH
 
-fun isUsernameValid(username: String) = username.length >= MIN_CREDENTIAL_LENGTH
-
 fun arePasswordsSame(password: String, repeatPassword: String) = isPasswordValid(password) &&
         isPasswordValid(repeatPassword) &&
         password == repeatPassword

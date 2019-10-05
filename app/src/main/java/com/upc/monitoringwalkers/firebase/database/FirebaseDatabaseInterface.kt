@@ -67,7 +67,7 @@ interface FirebaseDatabaseInterface {
     fun listenToDoctors(onResult: (DoctorEntity) -> Unit)
 
     /**
-     * TODO
+     * Listen changes on patients by doctor
      *
      * @param doctorId
      * @param onResult
@@ -76,7 +76,7 @@ interface FirebaseDatabaseInterface {
 
 
     /**
-     * TODO
+     * Delete a user by identifier
      *
      * @param userId
      * @param onResult
