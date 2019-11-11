@@ -1,2 +1,2 @@
-# monitoring-walkers-upc
-Monitoring Walkers project for UPC TDP course
+# Android example :  Firebase Dagger2 MVP 
+
